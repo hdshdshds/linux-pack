@@ -6,13 +6,13 @@ qemu-system-x86_64 \
 -cpu qemu64 \
 -smp 1 \
 -kernel `pwd`/bzImage \
--append "root=/dev/sda rootfstype=ext4 rw kgdboc=ttyS1,115200" -m 200m \
+-append "root=/dev/sda rootfstype=ext4 rw kgdboc=ttyS0" -m 200m \
 -drive file=`pwd`/rootfs.ext2 \
 -virtfs local,path=/home/h/linux/shared,mount_tag=host,security_model=none \
 -serial tcp::1234,server,nowait \
 #-nographic \
-#console=ttyS0 
-#-monitor telnet:127.0.0.1:5000,server,nowait \#open qemu monitor
+#-append "console=ttyS0 root=/dev/sda rootfstype=ext4 rw kgdboc=ttyS0" -m 200m \
+##-monitor telnet:127.0.0.1:5000,server,nowait \#open qemu monitor
 #-S -gdb tcp::1234
 #-append 'kgdbwait ' \
 #-fsdev local,id=test_dev,path=/data/host,security_model=none \
